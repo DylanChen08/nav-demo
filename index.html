@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,10 +16,23 @@
 
         kbd {
             display: inline-block;
-            width: 2rem;
-            height: 2rem;
+            position: relative;
+            width: 4rem;
+            height: 4rem;
             border: 1px solid #ddd;
             text-transform: uppercase;
+        }
+
+        button {
+            display: none;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        kbd:hover > button {
+            display: inline-block;
+            cursor: pointer;
         }
 
         main {
@@ -38,6 +52,7 @@
         }
     </style>
 </head>
+
 <body>
 <main>
     <div class="wrapper" id="mainContainer"></div>
@@ -61,24 +76,43 @@
         u: 'ubuntu.com',
         i: 'iqiyi.com',
         o: 'oppo.com',
-        p:  undefined,
+        p: undefined,
         a: 'alibaba.com',
         z: 'zhihu.com'
     }
+    //取出localStorage中的'localStorage'对应的hash
+    var hasLocalStorage = JSON.parse(localStorage.getItem('localStorage') || null)
+
+    if (hasLocalStorage) {
+        hash = hasLocalStorage;
+    }
+
 
     var index = 0;
     while (index < keys.length) {
-        var divGenerator = document.createElement('div');
-        mainContainer.appendChild(divGenerator);
+        var divContainer = document.createElement('div');
+        mainContainer.appendChild(divContainer);
 
         rows = keys[index];
         console.log(rows)
         index2 = 0;
 
         while (index2 < rows.length) {
-            var kbdGenerator = document.createElement('kbd');
-            kbdGenerator.textContent = rows[index2];
-            divGenerator.appendChild(kbdGenerator);
+            var kbdContainer = document.createElement('kbd');
+            kbdContainer.textContent = rows[index2];
+            var btnContainer = document.createElement('button');
+            btnContainer.textContent = 'edit';
+            btnContainer.id = rows[index2];
+            kbdContainer.appendChild(btnContainer);
+            btnContainer.onclick = function (btn) {
+                // 打印btn中target中的Id，利用哈希（数组）的特性
+                console.log('点击了' + btn['target']['id'])
+                let key = btn['target']['id'];
+                let x = prompt('给我一个网址');
+                hash[key] = x;
+                localStorage.setItem('localStorage', JSON.stringify(x));
+            }
+            divContainer.appendChild(kbdContainer);
             index2++;
         }
 
@@ -92,4 +126,5 @@
         location.href = 'http://' + website;
     }
 </script>
+
 </html>
