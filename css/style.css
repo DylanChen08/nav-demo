@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+kbd {
+    display: inline-block;
+    position: relative;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid #ddd;
+    text-transform: uppercase;
+}
+
+.key {
+    width: 50px;
+    height: 40px;
+    margin: 10px;
+    background: -webkit-linear-gradient(top, #292929 0%, #111111 100%);
+    color: #c5c5c5;
+    border: 1px solid #373737;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #dddddd, 0 0 0 2px #666, 0 3px 0 2px #141414;
+}
+.row{
+    margin-top: 10px;
+}
+
+button {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+kbd:hover > button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+main {
+    text-align: center;
+}
+
+#mainContainer {
+    display: inline-block;
+}
+
+#mainContainer > div:nth-child(2) {
+    margin-left: -36px;
+}
+
+#mainContainer > div:nth-child(3) {
+    margin-left: -110px;
+}

@@ -4,146 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        kbd {
-            display: inline-block;
-            position: relative;
-            width: 4rem;
-            height: 4rem;
-            border: 1px solid #ddd;
-            text-transform: uppercase;
-        }
-
-        .key {
-            width: 50px;
-            height: 40px;
-            margin: 10px;
-            background: -webkit-linear-gradient(top, #292929 0%, #111111 100%);
-            color: #c5c5c5;
-            border: 1px solid #373737;
-            border-radius: 6px;
-            box-shadow: 0 0 0 1px #dddddd, 0 0 0 2px #666, 0 3px 0 2px #141414;
-        }
-        .row{
-            margin-top: 10px;
-        }
-
-        button {
-            display: none;
-            position: absolute;
-            right: 0;
-            bottom: 0;
-        }
-
-        kbd:hover > button {
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        main {
-            text-align: center;
-        }
-
-        #mainContainer {
-            display: inline-block;
-        }
-
-        #mainContainer > div:nth-child(2) {
-            margin-left: -36px;
-        }
-
-        #mainContainer > div:nth-child(3) {
-            margin-left: -110px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 <main>
-    <!--<kbd class="key">A</kbd>-->
     <div class="wrapper" id="mainContainer">
     </div>
-
 </main>
 </body>
-<script>
-    var keys = {
-        0: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-        1: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-        2: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
-        length: 3
-    }
-
-    var hash = {
-        q: 'qq.com',
-        w: 'weibo.com',
-        e: 'ele.me',
-        r: 'renren.com',
-        t: 'taobao.com',
-        y: 'yahoo.cn',
-        u: 'ubuntu.com',
-        i: 'iqiyi.com',
-        o: 'oppo.com',
-        p: undefined,
-        a: 'alibaba.com',
-        z: 'zhihu.com'
-    }
-    //取出localStorage中的'localStorage'对应的hash
-    var hasLocalStorage = JSON.parse(localStorage.getItem('localStorage') || null)
-
-    if (hasLocalStorage) {
-        hash = hasLocalStorage;
-    }
-
-
-    var index = 0;
-    while (index < keys.length) {
-        var divContainer = document.createElement('div');
-        divContainer.className='row';
-        mainContainer.appendChild(divContainer);
-
-        rows = keys[index];
-        console.log(rows)
-        index2 = 0;
-
-        while (index2 < rows.length) {
-            var kbdContainer = document.createElement('kbd');
-            kbdContainer.textContent = rows[index2];
-            kbdContainer.className = 'key';
-            var btnContainer = document.createElement('button');
-            btnContainer.textContent = 'edit';
-            btnContainer.id = rows[index2];
-            kbdContainer.appendChild(btnContainer);
-            btnContainer.onclick = function (btn) {
-                // 打印btn中target中的Id，利用哈希（数组）的特性
-                console.log('点击了' + btn['target']['id'])
-                let key = btn['target']['id'];
-                let x = prompt('给我一个网址');
-                hash[key] = x;
-                localStorage.setItem('localStorage', JSON.stringify(x));
-            }
-            divContainer.appendChild(kbdContainer);
-            index2++;
-        }
-
-        index = index + 1;
-    }
-
-    document.onkeypress = function (e) {
-        var key = e.key;
-        let website = hash[key];
-        console.log(website)
-        location.href = 'http://' + website;
-    }
-</script>
-
+<script src="./js/main.js"></script>
 </html>
