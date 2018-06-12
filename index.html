@@ -23,6 +23,20 @@
             text-transform: uppercase;
         }
 
+        .key {
+            width: 50px;
+            height: 40px;
+            margin: 10px;
+            background: -webkit-linear-gradient(top, #292929 0%, #111111 100%);
+            color: #c5c5c5;
+            border: 1px solid #373737;
+            border-radius: 6px;
+            box-shadow: 0 0 0 1px #dddddd, 0 0 0 2px #666, 0 3px 0 2px #141414;
+        }
+        .row{
+            margin-top: 10px;
+        }
+
         button {
             display: none;
             position: absolute;
@@ -44,18 +58,21 @@
         }
 
         #mainContainer > div:nth-child(2) {
-            margin-left: 1rem;
+            margin-left: -36px;
         }
 
         #mainContainer > div:nth-child(3) {
-            margin-left: 2rem;
+            margin-left: -110px;
         }
     </style>
 </head>
 
 <body>
 <main>
-    <div class="wrapper" id="mainContainer"></div>
+    <!--<kbd class="key">A</kbd>-->
+    <div class="wrapper" id="mainContainer">
+    </div>
+
 </main>
 </body>
 <script>
@@ -91,6 +108,7 @@
     var index = 0;
     while (index < keys.length) {
         var divContainer = document.createElement('div');
+        divContainer.className='row';
         mainContainer.appendChild(divContainer);
 
         rows = keys[index];
@@ -100,6 +118,7 @@
         while (index2 < rows.length) {
             var kbdContainer = document.createElement('kbd');
             kbdContainer.textContent = rows[index2];
+            kbdContainer.className = 'key';
             var btnContainer = document.createElement('button');
             btnContainer.textContent = 'edit';
             btnContainer.id = rows[index2];
