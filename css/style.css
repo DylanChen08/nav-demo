@@ -3,6 +3,15 @@
     padding: 0;
 }
 
+body {
+    height: 100vh;
+    /*border: 1px solid green;*/
+    background: #ddd url("../images/wall615.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+}
+
 a {
     text-decoration: none;
 }
@@ -19,14 +28,25 @@ kbd {
 }
 
 .key {
+    position: relative;
     width: 50px;
     height: 40px;
     margin: 10px;
     background: -webkit-linear-gradient(top, #292929 0%, #111111 100%);
+    background: linear-gradient(top, #292929 0%, #111111 100%);
     color: #c5c5c5;
     border: 1px solid #373737;
     border-radius: 6px;
     box-shadow: 0 0 0 1px #dddddd, 0 0 0 2px #666, 0 3px 0 2px #141414;
+}
+
+kbd img {
+    position: absolute;
+    left: 4px;
+    bottom: 2px;
+    width: 16px;
+    height: 16px;
+    background: transparent;
 }
 
 .row {
@@ -46,7 +66,9 @@ kbd:hover > button {
 }
 
 main {
+    margin-top: 150px;
     text-align: center;
+    /*border: 1px solid red;*/
 }
 
 #mainContainer {
@@ -59,4 +81,9 @@ main {
 
 #mainContainer > div:nth-child(3) {
     margin-left: -110px;
+}
+
+.wrapper {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }

@@ -9,15 +9,29 @@ var hash = {
     q: 'qq.com',
     w: 'weibo.com',
     e: 'ele.me',
-    r: 'renren.com',
+    r: undefined,
     t: 'taobao.com',
-    y: 'yahoo.cn',
-    u: 'ubuntu.com',
+    y: 'youtube.com',
+    u: undefined,
     i: 'iqiyi.com',
     o: 'oppo.com',
     p: undefined,
     a: 'alibaba.com',
-    z: 'zhihu.com'
+    s: undefined,
+    d: undefined,
+    f: undefined,
+    g: undefined,
+    h: undefined,
+    j: undefined,
+    k: undefined,
+    l: undefined,
+    z: 'zhihu.com',
+    x: undefined,
+    c: undefined,
+    v: undefined,
+    b: undefined,
+    n: undefined,
+    m: undefined,
 }
 //取出localStorage中的'localStorage'对应的hash
 var hasLocalStorage = JSON.parse(localStorage.getItem('localStorage') || null)
@@ -41,10 +55,19 @@ while (index < keys.length) {
         var kbdContainer = document.createElement('kbd');
         kbdContainer.textContent = rows[index2];
         kbdContainer.className = 'key';
+        var imgContainer = document.createElement('img');
+        if (hash[rows[index2]]) {
+            imgContainer.src = "http://" + hash[rows[index2]] + "/favicon.ico";
+        } else {
+            // console.log(1)
+            imgContainer.src = '//icons8.com/favicon.ico';
+        }
+
         var btnContainer = document.createElement('button');
         btnContainer.textContent = 'edit';
         btnContainer.id = rows[index2];
         kbdContainer.appendChild(btnContainer);
+        kbdContainer.appendChild(imgContainer);
         btnContainer.onclick = function (btn) {
             // 打印btn中target中的Id，利用哈希（数组）的特性
             console.log('点击了' + btn['target']['id'])
