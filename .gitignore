@@ -5,3 +5,5 @@
 *.ntvs*
 *.njsproj
 *.sln
+*___jb_tmp___
+*___jb_old___
