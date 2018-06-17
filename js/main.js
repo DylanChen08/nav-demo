@@ -17,16 +17,16 @@ var hash = {
     o: 'oppo.com',
     p: undefined,
     a: 'alibaba.com',
-    s: undefined,
-    d: undefined,
+    s: 'www.sogou.com',
+    d: 'www.didiglobal.com',
     f: undefined,
-    g: undefined,
+    g: 'google.com',
     h: undefined,
     j: undefined,
     k: undefined,
     l: undefined,
     z: 'zhihu.com',
-    x: undefined,
+    x: '',
     c: undefined,
     v: undefined,
     b: undefined,
@@ -61,6 +61,9 @@ while (index < keys.length) {
         } else {
             // console.log(1)
             imgContainer.src = '//icons8.com/favicon.ico';
+        }
+        imgContainer.onerror = function (e) {
+            e.target.src = '//icons8.com/favicon.ico'
         }
 
         var btnContainer = document.createElement('button');
