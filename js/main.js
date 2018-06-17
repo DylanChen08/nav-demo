@@ -48,7 +48,7 @@ while (index < keys.length) {
     mainContainer.appendChild(divContainer);
 
     rows = keys[index];
-    console.log(rows)
+    // console.log(rows)
     index2 = 0;
 
     while (index2 < rows.length) {
@@ -69,14 +69,29 @@ while (index < keys.length) {
         var btnContainer = document.createElement('button');
         btnContainer.textContent = 'edit';
         btnContainer.id = rows[index2];
-        kbdContainer.appendChild(btnContainer);
         kbdContainer.appendChild(imgContainer);
+        kbdContainer.appendChild(btnContainer);
+
         btnContainer.onclick = function (btn) {
-            // 打印btn中target中的Id，利用哈希（数组）的特性
-            console.log('点击了' + btn['target']['id'])
-            let key = btn['target']['id'];
+            /*
+            * btn中target中的Id，利用哈希（数组）的特性
+            * 获取到所点击按钮的target对象
+            *
+            * */
+            let btnSetter = btn['target'];
+            // console.log('点击了' + btn['target']['id'])
+            //获取到所点击按钮的兄弟元素=>img
+            let imgSetter = btnSetter.previousSibling;
+            console.log(btnSetter.previousSibling)
+            let key = btnSetter['id'];
             let x = prompt('给我一个网址');
             hash[key] = x;
+            //给修改的网址加上新的icon
+            imgSetter.src = "http://" + x + "/favicon.ico";
+            //当设置的网址不存在或者出错的时候，自动设置一个默认的
+            imgSetter.onerror = function (e) {
+                e.target.src = '//icons8.com/favicon.ico'
+            }
             localStorage.setItem('localStorage', JSON.stringify(x));
         }
         divContainer.appendChild(kbdContainer);
