@@ -31,10 +31,15 @@ var hash = {
     v: undefined,
     b: undefined,
     n: undefined,
-    m: undefined,
+    m: 'map.baidu.com',
 }
 //取出localStorage中的'localStorage'对应的hash
-var hasLocalStorage = JSON.parse(localStorage.getItem('localStorage') || null)
+var hasLocalStorage = getFromLocalStorage(localStorage);
+
+
+function getFromLocalStorage(name) {
+    JSON.parse(localStorage.getItem(name) || null)
+}
 
 if (hasLocalStorage) {
     hash = hasLocalStorage;
