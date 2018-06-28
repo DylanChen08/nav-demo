@@ -38,7 +38,7 @@ var hasLocalStorage = getFromLocalStorage(localStorage);
 
 
 function getFromLocalStorage(name) {
-    JSON.parse(localStorage.getItem(name) || null)
+    return JSON.parse(localStorage.getItem(name) || null)
 }
 
 if (hasLocalStorage) {
@@ -46,10 +46,22 @@ if (hasLocalStorage) {
 }
 
 
+//传来两个参数，一个是创建的标签名，一个是给标签加的类（哈希）;
+function tag(tagName, attributes) {
+    let elements = document.createElement(tagName);
+    for (var key in attributes) {
+        elements[key] = attributes[key]
+    }
+    return elements;
+
+}
+
+
 var index = 0;
 while (index < keys.length) {
-    var divContainer = document.createElement('div');
-    divContainer.className = 'row';
+    var divContainer = tag('div', {className: 'row'});
+    // divContainer.className = 'row';
+
     mainContainer.appendChild(divContainer);
 
     rows = keys[index];
@@ -57,10 +69,10 @@ while (index < keys.length) {
     index2 = 0;
 
     while (index2 < rows.length) {
-        var kbdContainer = document.createElement('kbd');
+        var kbdContainer = tag('kbd');
         kbdContainer.textContent = rows[index2];
         kbdContainer.className = 'key';
-        var imgContainer = document.createElement('img');
+        var imgContainer = tag('img');
         if (hash[rows[index2]]) {
             imgContainer.src = "http://" + hash[rows[index2]] + "/favicon.ico";
         } else {
@@ -71,7 +83,7 @@ while (index < keys.length) {
             e.target.src = '//icons8.com/favicon.ico'
         }
 
-        var btnContainer = document.createElement('button');
+        var btnContainer = tag('button');
         btnContainer.textContent = 'edit';
         btnContainer.id = rows[index2];
         kbdContainer.appendChild(imgContainer);
