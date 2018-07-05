@@ -109,7 +109,7 @@ function createButton(id) {
     btnContainer.id = id;
 
     // 插入icon
-    console.log(kbdContainer)
+    // console.log(kbdContainer)
     kbdContainer.appendChild(imgContainer);
 
 
