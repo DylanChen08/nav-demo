@@ -3,12 +3,12 @@ var getHash = init();
 var keys = getHash.keys;
 var hash = getHash.hash;
 
-// createKeyBoard(keys,hash);
 
 //监听键盘
 listenToUser(hash);
 
 //生成键盘
+
 for (var index = 0; index < keys.length; index++) {
     var divContainer = tag('div', {className: 'row'});
     divContainer.className = 'row';
@@ -102,12 +102,14 @@ function tag(tagName, attributes) {
 
 }
 
+
 function createButton(id) {
     var btnContainer = tag('button');
     btnContainer.textContent = 'edit';
     btnContainer.id = id;
 
     // 插入icon
+    console.log(kbdContainer)
     kbdContainer.appendChild(imgContainer);
 
 
@@ -162,6 +164,3 @@ function listenToUser(hash) {
         );
     }
 }
-
-
-
