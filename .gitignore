@@ -7,3 +7,6 @@
 *.sln
 *___jb_tmp___
 *___jb_old___
+/.cache/
+/node_modules/
+/.idea/
